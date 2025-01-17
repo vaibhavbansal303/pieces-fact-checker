@@ -1,0 +1,143 @@
+# pieces-fact-checker
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pieces for Developers</title>
+    <style>
+        /* GENERAL STYLING */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 20px;
+        }
+
+        h2 {
+            color: #2980b9; 
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            color: #333; 
+        }
+
+        p {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* FEATURE BOX STYLING */
+        .feature {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Gradient Overlay */
+        .feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom right, rgba(245, 245, 245, 0.8), rgba(255, 255, 255, 0.6));
+            z-index: -1;
+        }
+
+        /* FACT CHECK BUTTON */
+        .fact-check-button {
+            background-color: #27ae60;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin-top: 10px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .fact-check-button:hover {
+            background-color: #2ecc71;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <script>
+            const data = {
+                "Core Functionality": [
+                    {
+                        "fact": "Universal Snippet Manager",
+                        "description": "Pieces helps you capture and organize all types of code snippets, from small functions to complex algorithms."
+                    },
+                    {
+                        "fact": "Multi-Language Support",
+                        "description": "Pieces understands and formats code in dozens of programming languages, ensuring accurate syntax highlighting."
+                    },
+                    {
+                        "fact": "Cross-Platform Compatibility",
+                        "description": "Use Pieces seamlessly across Windows, macOS, and Linux, maintaining consistency in your workflow."
+                    },
+                    {
+                        "fact": "Robust Search",
+                        "description": "Quickly find any saved snippet using keywords, tags, or even code within the snippet itself."
+                    },
+                    {
+                        "fact": "Smart Description Generation",
+                        "description": "Pieces can automatically suggest descriptions for your snippets based on their content."
+                    }
+                ],
+                // ... (Add other categories and facts)
+            };
+
+            document.addEventListener('DOMContentLoaded', () => { // Wait for DOM to be fully loaded
+                const container = document.querySelector('.container');
+                for (const category in data) {
+                    const featureDiv = document.createElement('div');
+                    featureDiv.classList.add('feature');
+                    featureDiv.innerHTML = `<h2>${category}</h2>`; 
+
+                    data[category].forEach(item => {
+                        featureDiv.innerHTML += `<h3>${item.fact}</h3>
+                                                 <p>${item.description}</p>
+                                                 <button class="fact-check-button" onclick="factCheck('${item.fact}')">Fact Check</button>`;
+                    });
+
+                    container.appendChild(featureDiv);
+                }
+            });
+
+            function factCheck(fact) {
+                // TODO: Replace with actual fact-checking logic
+                alert("Fact-checking the following: " + fact + "\n\nThis will eventually call your fact-checking API or service."); 
+            }
+        </script>
+    </div>
+</body>
+</html>

@@ -1,1 +1,0 @@
-# pieces-fact-checker
